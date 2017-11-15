@@ -57,7 +57,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -92,7 +92,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -127,7 +127,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -162,7 +162,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -197,7 +197,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -229,7 +229,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let dataset = Dataset(jsonObject: json)
                     completion(dataset)
@@ -258,7 +258,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     var datasets = [Dataset]()
                     
@@ -319,7 +319,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let label = Label(jsonObject: json)
                     completion(label)
@@ -351,7 +351,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let label = Label(jsonObject: json)
                     completion(label)
@@ -389,7 +389,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let example = Example(jsonObject: json)
                     completion(example)
@@ -423,7 +423,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let example = Example(jsonObject: json)
                     completion(example)
@@ -457,7 +457,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let example = Example(jsonObject: json)
                     completion(example)
@@ -489,7 +489,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let example = Example(jsonObject: json)
                     completion(example)
@@ -521,7 +521,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     var examples = [Example]()
                     
@@ -585,7 +585,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let model = Model(jsonObject: json)
                     completion(model)
@@ -616,7 +616,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let model = Model(jsonObject: json)
                     completion(model)
@@ -647,7 +647,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     var modelLearningCurves = [ModelLearningCurve]()
 
@@ -684,7 +684,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let modelMetrics = ModelMetrics(jsonObject: json)
                     completion(modelMetrics)
@@ -715,7 +715,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     var models = [Model]()
                     
@@ -757,7 +757,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let predictionResult = PredictionResult(jsonObject: json)
                     completion(predictionResult)
@@ -792,7 +792,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let predictionResult = PredictionResult(jsonObject: json)
                     completion(predictionResult)
@@ -827,7 +827,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     let predictionResult = PredictionResult(jsonObject: json)
                     completion(predictionResult)
@@ -860,7 +860,7 @@ public class PredictionService {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     var apiUsages = [ApiUsage]()
                     

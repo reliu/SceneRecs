@@ -75,7 +75,7 @@ class HttpClient {
                                 do {
                                     json = try JSON(data: dataFromString)
                                 } catch _ {
-                                    json = nil
+                                    json = JSON.null
                                 }
                                 
                                 if (statusCode==400 || statusCode==200) {
@@ -129,7 +129,7 @@ class HttpClient {
                     do {
                         json = try JSON(data: dataFromString)
                     } catch _ {
-                        json = nil
+                        json = JSON.null
                     }
                     
                     if (statusCode==400 || statusCode==200) {

@@ -19,44 +19,60 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBAction func takeAndAnalyzePhoto(_ sender: UIButton) {
         
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        let image = UIImagePickerController()
+        image.delegate = self
         
-        present(imagePicker, animated: true, completion: nil)
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        image.allowsEditing = false
+        
+        self.present(image, animated: true) {
+            // After it is complete
+        }
+        
+//        imagePicker =  UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .camera
+//        
+//        present(imagePicker, animated: true, completion: nil)
         
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = chosenImage
-        dismiss(animated: true, completion: nil)
-        
-        // convert UIImage to base64
-        let imageData = UIImageJPEGRepresentation(chosenImage, 0.4)! as NSData
-        let imageStr = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-
-        
-        // Initialize the service with a valid access token
-        let service = PredictionService(bearerToken: "enterYourValidBearerTokenHere")
-        
-        // Upload base64 for prediction on the General Image Classifier Model
-        service?.predictBase64(modelId: "GeneralImageClassifier", base64: imageStr, sampleId: "", completion: { (result) in
-
-            var resultString = ""
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.image = chosenImage
             
-            if (result != nil) {
-                for prob in (result?.probabilities!)! {
-                    resultString = resultString + prob.label! + " (" + String(prob.probability!) + ")\n"
+            // convert UIImage to base64
+            let imageData = UIImageJPEGRepresentation(chosenImage, 0.4)! as NSData
+            let imageStr = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+            
+            // Initialize the service with a valid access token - CHANGE THIS OFTEN
+            let service = PredictionService(bearerToken: "")
+
+            // Upload base64 for prediction on the Scene Classifier Model
+            service?.predictBase64(modelId: "SceneClassifier", base64: imageStr, sampleId: "", completion: { (result) in
+                var resultString = ""
+                
+                if (result != nil) {
+                    resultString = ((result?.probabilities!)?[0].label!)! // Get scene with highest probability
+                    print(resultString)
+//                    for prob in (result?.probabilities!)! {
+//                        resultString = resultString + prob.label! + " (" + String(prob.probability!) + ")\n"
+//                    }
+                } else {
+                    resultString = "No data found"
                 }
-            } else {
-                resultString = "No data found"
-            }
+                
+                self.analysisText.text = resultString
+            })
 
-            self.analysisText.text = resultString
-            
-        })
+        }
+        else {
+            print("Something went wrong")
+        }
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
