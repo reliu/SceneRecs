@@ -187,6 +187,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.analysisText.isUserInteractionEnabled = false
+        self.analysisText.isEditable = false
     }
 
     override func didReceiveMemoryWarning() {

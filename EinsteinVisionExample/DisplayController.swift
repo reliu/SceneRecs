@@ -9,20 +9,56 @@
 import Foundation
 import UIKit
 
-class DisplayController: UIViewController {
+class DisplayController: UICollectionViewController {
 
     var currCategory: String!
+    var photos = Photo.allPhotos()
     
     @IBOutlet weak var headerText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.headerText.text = self.currCategory
+
         self.title = self.currCategory
         
+        if let layout = collectionView?.collectionViewLayout as? ApparelLayout {
+            layout.delegate = self
+        }
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 
 
+}
+
+extension DisplayController: ApparelLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+        
+        return photos[indexPath.item].image.size.height
+    }
+}
+
+extension DisplayController: UICollectionViewDelegateFlowLayout {
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnnotatedPhotoCell", for: indexPath as IndexPath) as! AnnotatedPhotoCell
+        cell.photo = photos[indexPath.item]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        return CGSize(width: itemSize, height: itemSize)
+    }
+    
 }
