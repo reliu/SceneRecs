@@ -26,13 +26,24 @@ class DisplayController: UICollectionViewController {
             layout.delegate = self
         }
         
+        if currCategory == "paddling clothing" {
+            self.photos = Array(self.photos[0..<6])
+        }
+        else if currCategory == "swimwear" {
+            self.photos = Array(self.photos[6..<12])
+        }
+        else if currCategory == "travel clothing" {
+            self.photos = Array(self.photos[12..<18])
+        }
+        else {
+            print("currCategory is empty")
+        }
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-
 
 }
 
