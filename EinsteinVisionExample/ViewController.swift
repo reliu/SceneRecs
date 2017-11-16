@@ -65,7 +65,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let imageStr = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
             // Initialize the service with a valid access token - CHANGE THIS OFTEN
-            let service = PredictionService(bearerToken: "QHKFVYYAYKOALETAGQFJQKLKDX4YVWI23U5VLHOEIOZXKDTK65HLWCEYT6KSRE3VCYU3FNGWQUCDM4NU7RTBOZ34LH23CYZB6LC2PBI")
+            let service = PredictionService(bearerToken: "")
 
             // Upload base64 for prediction on the Scene Classifier Model
             service?.predictBase64(modelId: "SceneClassifier", base64: imageStr, sampleId: "", completion: { (result) in

@@ -27,13 +27,13 @@ class DisplayController: UICollectionViewController {
         }
         
         if currCategory == "paddling clothing" {
-            self.photos = Array(self.photos[0..<6])
+            self.photos = Array(self.photos[0..<10])
         }
         else if currCategory == "swimwear" {
-            self.photos = Array(self.photos[6..<12])
+            self.photos = Array(self.photos[10..<20])
         }
         else if currCategory == "travel clothing" {
-            self.photos = Array(self.photos[12..<18])
+            self.photos = Array(self.photos[20..<30])
         }
         else {
             print("currCategory is empty")

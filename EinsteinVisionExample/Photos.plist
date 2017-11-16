@@ -57,6 +57,38 @@ O&apos;Neill Epic 4/3mm Full Wetsuit - Men&apos;s</string>
 	</dict>
 	<dict>
 		<key>Caption</key>
+		<string>O&apos;Neill Epic 3/2 Full Wetsuit - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$164.95</string>
+		<key>Photo</key>
+		<string>p7</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>O&apos;Neill Hyperfreak FUZE 3mm Wetsuit - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$269.95</string>
+		<key>Photo</key>
+		<string>p8</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>O&apos;Neill Basic Skins Long-Sleeve Tee Rashguard - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$32.95</string>
+		<key>Photo</key>
+		<string>p9</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>O&apos;Neill O&apos;riginal FUZE 5/4mm Wetsuit with Hood - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$299.95</string>
+		<key>Photo</key>
+		<string>p10</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
 		<string>Patagonia Baggies Longs Shorts - Men&apos;s 7&quot; Inseam</string>
 		<key>Comment</key>
 		<string>$34.93 - $49.00</string>
@@ -105,6 +137,38 @@ O&apos;Neill Epic 4/3mm Full Wetsuit - Men&apos;s</string>
 	</dict>
 	<dict>
 		<key>Caption</key>
+		<string>Carve Designs Sanitas One-Piece Swimsuit</string>
+		<key>Comment</key>
+		<string>$21.83 - $88.00</string>
+		<key>Photo</key>
+		<string>s7</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>prAna Ramba Bikini Bottoms - Women&apos;s</string>
+		<key>Comment</key>
+		<string>$24.83 - $50.00</string>
+		<key>Photo</key>
+		<string>s8</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>TYR Phoenix Splice Maxfit Swimsuit - Women&apos;s</string>
+		<key>Comment</key>
+		<string>$51.93 - $75.00</string>
+		<key>Photo</key>
+		<string>s9</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>NRS H2Core Rashguard - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$44.95</string>
+		<key>Photo</key>
+		<string>s10</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
 		<string>Toad&amp;Co Dakotah Travel Shirt - Women&apos;s</string>
 		<key>Comment</key>
 		<string>$69.00</string>
@@ -150,6 +214,38 @@ O&apos;Neill Epic 4/3mm Full Wetsuit - Men&apos;s</string>
 		<string>$62.73</string>
 		<key>Photo</key>
 		<string>t6</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Patagonia Nano Puff Vest - Women&apos;s</string>
+		<key>Comment</key>
+		<string>$149.00</string>
+		<key>Photo</key>
+		<string>t7</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Patagonia Better Sweater Vest - Men&apos;s</string>
+		<key>Comment</key>
+		<string>$99.00</string>
+		<key>Photo</key>
+		<string>t8</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Patagonia Better Sweater Vest - Women&apos;s</string>
+		<key>Comment</key>
+		<string>$99.00</string>
+		<key>Photo</key>
+		<string>t9</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Patagonia Bivy Hooded Down Vest - Women&apos;s</string>
+		<key>Comment</key>
+		<string>$179.00</string>
+		<key>Photo</key>
+		<string>t10</string>
 	</dict>
 </array>
 </plist>
