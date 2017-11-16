@@ -60,6 +60,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="zRX-m1-Mha"/>
                     <connections>
                         <outlet property="analysisText" destination="UE7-1v-C0i" id="Lus-KF-D4t"/>
                         <outlet property="imageView" destination="Hql-xX-wq1" id="fFX-Ts-v8o"/>
@@ -67,11 +68,66 @@
                         <outlet property="rec2" destination="W2D-6d-1Cy" id="44T-FW-Vaj"/>
                         <outlet property="rec3" destination="33k-gu-tbb" id="crV-S1-8Go"/>
                         <outlet property="webView" destination="AV8-zg-hqT" id="ncl-68-lDY"/>
+                        <segue destination="Myq-8p-r5N" kind="show" identifier="showDisplay" id="YIw-QZ-cN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="143" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NGp-rq-698">
+            <objects>
+                <navigationController id="Myq-8p-r5N" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ELm-iV-hFH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fqE-2c-LsT" kind="relationship" relationship="rootViewController" id="w2S-ae-isY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8n-6N-g6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="-608"/>
+        </scene>
+        <!--Display Controller-->
+        <scene sceneID="rz2-wn-TaW">
+            <objects>
+                <viewController id="fqE-2c-LsT" customClass="DisplayController" customModule="EinsteinVisionExample" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EKX-eu-2DW"/>
+                        <viewControllerLayoutGuide type="bottom" id="KwU-LQ-b4Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="leo-k4-rBJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Header" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7AO-xJ-jdK" userLabel="Header Text">
+                                <rect key="frame" x="16" y="146" width="343" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ogt-Uh-fKo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QAw-6g-Bq0">
+                            <connections>
+                                <segue destination="0b6-vQ-Zk1" kind="unwind" unwindAction="unwindToViewWithSegue:" id="Ls1-3B-fa4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="headerText" destination="7AO-xJ-jdK" id="pxs-7v-3jo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfY-PD-7i7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0b6-vQ-Zk1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="134"/>
         </scene>
     </scenes>
 </document>

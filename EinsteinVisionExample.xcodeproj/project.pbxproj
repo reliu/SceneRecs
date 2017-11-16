@@ -13,6 +13,7 @@
 		E077F0D31E79487D00D517E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E077F0D11E79487D00D517E7 /* Main.storyboard */; };
 		E077F0D51E79487D00D517E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E077F0D41E79487D00D517E7 /* Assets.xcassets */; };
 		E077F0D81E79487D00D517E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E077F0D61E79487D00D517E7 /* LaunchScreen.storyboard */; };
+		E7E222031FBD2A6500BF76F4 /* DisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E222021FBD2A6500BF76F4 /* DisplayController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E077F0D41E79487D00D517E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E077F0D71E79487D00D517E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E077F0D91E79487E00D517E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E222021FBD2A6500BF76F4 /* DisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				E077F0CD1E79487D00D517E7 /* AppDelegate.swift */,
 				E077F0CF1E79487D00D517E7 /* ViewController.swift */,
+				E7E222021FBD2A6500BF76F4 /* DisplayController.swift */,
 				E077F0D11E79487D00D517E7 /* Main.storyboard */,
 				E077F0D41E79487D00D517E7 /* Assets.xcassets */,
 				E077F0D61E79487D00D517E7 /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 			files = (
 				E077F0D01E79487D00D517E7 /* ViewController.swift in Sources */,
 				E077F0CE1E79487D00D517E7 /* AppDelegate.swift in Sources */,
+				E7E222031FBD2A6500BF76F4 /* DisplayController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

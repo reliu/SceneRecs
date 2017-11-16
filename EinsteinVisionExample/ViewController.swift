@@ -14,6 +14,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     let travelScenes = ["Airplane interior", "Airport check-in", "Airport exterior", "Airport terminal",
                         "Highway", "Hotel lobby", "Hotel room", "Bus or train interior"]
     let swimScenes = ["Beach or shoreline", "Pool", "Natural water"]
+    var currCategory = ""
     
     //var webView = UIWebView()
     
@@ -64,7 +65,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let imageStr = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
             // Initialize the service with a valid access token - CHANGE THIS OFTEN
-            let service = PredictionService(bearerToken: "")
+            let service = PredictionService(bearerToken: "VFTC5TLQUAKY27K6YB45TYOKKZ2VZBSYWE5GZVFUDD6FRZ74YCKHTFOHL5OKRFJ536MU4MX4A36OY2XNR5QKEWGOGJAYC46HK4TRBPY")
 
             // Upload base64 for prediction on the Scene Classifier Model
             service?.predictBase64(modelId: "SceneClassifier", base64: imageStr, sampleId: "", completion: { (result) in
@@ -147,19 +148,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     func action(sender:UIButton!) {
-        print("Button Clicked")
-        if sender.titleLabel?.text == "travel clothing" {
-            UIApplication.shared.open(URL(string: "https://www.rei.com/s/travel-clothing")!) //opens safari
-        }
-        else if sender.titleLabel?.text == "paddling clothing" {
-            UIApplication.shared.open(URL(string: "https://www.rei.com/c/paddling-clothing")!) //opens safari
-        }
-        else if sender.titleLabel?.text == "swimwear" {
-            UIApplication.shared.open(URL(string: "https://www.rei.com/c/swimwear")!) //opens safari
-        }
-        else {
-            print("Could not parse button text")
-        }
+        self.currCategory = (sender.titleLabel?.text)!
+        self.performSegue(withIdentifier: "showDisplay", sender: self)
+        
+        
+//        print("Button Clicked")
+//        if sender.titleLabel?.text == "travel clothing" {
+//            UIApplication.shared.open(URL(string: "https://www.rei.com/s/travel-clothing")!) //opens safari
+//        }
+//        else if sender.titleLabel?.text == "paddling clothing" {
+//            UIApplication.shared.open(URL(string: "https://www.rei.com/c/paddling-clothing")!) //opens safari
+//        }
+//        else if sender.titleLabel?.text == "swimwear" {
+//            UIApplication.shared.open(URL(string: "https://www.rei.com/c/swimwear")!) //opens safari
+//        }
+//        else {
+//            print("Could not parse button text")
+//        }
         
     }
     
@@ -187,6 +192,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToView(segue: UIStoryboardSegue) {}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDisplay" {
+            if let navController = segue.destination as? UINavigationController {
+                if let controller = navController.topViewController as? DisplayController {
+                    controller.currCategory = self.currCategory
+                }
+            }
+            
+            
+        }
     }
 
 }
