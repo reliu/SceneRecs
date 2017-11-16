@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  EinsteinVisionExample
 //
-//  Created by René Winkelmeyer on 15/03/2017.
+//  Created by Renee Liu on 11/15/17.
 //  Copyright © 2017 René Winkelmeyer. All rights reserved.
 //
 
@@ -15,9 +15,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                         "Highway", "Hotel lobby", "Hotel room", "Bus or train interior"]
     let swimScenes = ["Beach or shoreline", "Pool", "Natural water"]
     var currCategory = ""
-    
-    //var webView = UIWebView()
-    
+
+    @IBOutlet weak var recHeader: UITextView!
     @IBOutlet weak var rec1: UIButton!
     @IBOutlet weak var rec2: UIButton!
     @IBOutlet weak var rec3: UIButton!
@@ -30,6 +29,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var analysisText: UITextView!
     
     @IBAction func takeAndAnalyzePhoto(_ sender: UIButton) {
+        
+        // Get photo
 
         let image = UIImagePickerController()
         image.delegate = self
@@ -42,17 +43,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             // After it is complete
         }
         
-//        imagePicker =  UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .camera
-//        
-//        present(imagePicker, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        // Reset text views
         self.analysisText.text = ""
+        self.recHeader.text = ""
         self.rec1.setTitle("", for: .normal)
         self.rec2.setTitle("", for: .normal)
         self.rec3.setTitle("", for: .normal)
@@ -64,42 +61,34 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let imageData = UIImageJPEGRepresentation(chosenImage, 0.4)! as NSData
             let imageStr = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
-            // Initialize the service with a valid access token - CHANGE THIS OFTEN
-            let service = PredictionService(bearerToken: "")
+            // Initialize the service with a valid access token - UPLOAD BEARER TOKEN
+            let service = PredictionService(bearerToken: "B7Z6U3QVNR5PUEQQJ6RRKSR3FQ3S5UWD6KU62SLXTTW72ER4EAXPMDET3MITKU35LWHSITOSLA4MPPBZTEKKA7NHRGJYAJVJ4NKSMBA")
 
             // Upload base64 for prediction on the Scene Classifier Model
             service?.predictBase64(modelId: "SceneClassifier", base64: imageStr, sampleId: "", completion: { (result) in
-                var resultString = ""
                 var probLabels = [String]()
-                
+                // Save scene probabilities
                 if (result != nil) {
-//                    resultString = ((result?.probabilities!)?[0].label!)! // Get scene with highest probability
-//                    self.handleScene(resultString: resultString)
-                    //UIApplication.shared.open(URL(string: "http://www.rei.com")!) //opens safari
-                    //self.webView.loadRequest(URLRequest(url: URL(string: "http://www.rei.com")!)) //opens in-app
                     if (result?.probabilities!)!.count < 3 {
                         for prob in (result?.probabilities!)! {
-                            //resultString = resultString + prob.label! + " (" + String(prob.probability!) + ")\n"
                             probLabels.append(prob.label!)
                         }
                     }
                     else {
                         for i in 0 ..< 3 {
                             let prob = (result?.probabilities!)![i]
-                            //resultString = resultString + prob.label! + " (" + String(prob.probability!) + ")\n"
                             probLabels.append(prob.label!)
                         }
                     }
                     self.generateRecs(probLabels: probLabels)
                 } else {
-                    resultString = "No data found"
+                    self.analysisText.text = "No data found"
                 }
-//                print(resultString)
-//                self.analysisText.text = resultString
             })
         }
         else {
-            print("Something went wrong")
+            self.analysisText.text = "Error choosing image"
+            print("Error choosing image")
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -107,10 +96,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     func generateRecs(probLabels: [String]) {
-        let probLabels = Array(Set(probLabels)) //make into a unique array
+        let probLabels = Array(Set(probLabels)) // Make into a unique array
         var output = [String]()
         
-        // generate rec output
+        // Categorize scenes into apparel categories
         for label in probLabels {
             if travelScenes.contains(label) && !output.contains("travel clothing") && output.count <= 3 {
                 output.append("travel clothing")
@@ -121,18 +110,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
         }
         
-        // assign output text to respective button
+        // Assign output text to respective button
         if output.count == 1 {
+            self.recHeader.text = "Choose a category:"
             self.rec1.setTitle(output[0], for: .normal)
             self.rec1.addTarget(self, action: #selector(action(sender:)), for: UIControlEvents.touchUpInside)
         }
         else if output.count == 2 {
+            self.recHeader.text = "Choose a category:"
             self.rec1.setTitle(output[0], for: .normal)
             self.rec1.addTarget(self, action: #selector(action(sender:)), for: UIControlEvents.touchUpInside)
             self.rec2.setTitle(output[1], for: .normal)
             self.rec2.addTarget(self, action: #selector(action(sender:)), for: UIControlEvents.touchUpInside)
         }
         else if output.count == 3 {
+            self.recHeader.text = "Choose a category:"
             self.rec1.setTitle(output[0], for: .normal)
             self.rec1.addTarget(self, action: #selector(action(sender:)), for: UIControlEvents.touchUpInside)
             self.rec2.setTitle(output[1], for: .normal)
@@ -144,51 +136,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.analysisText.text = "Error: no recommendations for this photo"
         }
         
-        //print(output)
     }
     
     func action(sender:UIButton!) {
+        // Prepare data for segue
         self.currCategory = (sender.titleLabel?.text)!
         self.performSegue(withIdentifier: "showDisplay", sender: self)
-        
-        
-//        print("Button Clicked")
-//        if sender.titleLabel?.text == "travel clothing" {
-//            UIApplication.shared.open(URL(string: "https://www.rei.com/s/travel-clothing")!) //opens safari
-//        }
-//        else if sender.titleLabel?.text == "paddling clothing" {
-//            UIApplication.shared.open(URL(string: "https://www.rei.com/c/paddling-clothing")!) //opens safari
-//        }
-//        else if sender.titleLabel?.text == "swimwear" {
-//            UIApplication.shared.open(URL(string: "https://www.rei.com/c/swimwear")!) //opens safari
-//        }
-//        else {
-//            print("Could not parse button text")
-//        }
-        
     }
-    
-    func handleScene(resultString: String) {
-        if travelScenes.contains(resultString) {
-            UIApplication.shared.open(URL(string: "https://www.rei.com/s/travel-clothing")!) //opens safari
-        }
-        else if swimScenes.contains(resultString) {
-            UIApplication.shared.open(URL(string: "https://www.rei.com/c/swimwear")!) //opens safari
-        }
-        else {
-            self.analysisText.text = "Error: could not recognize scene."
-        }
-    }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Make text read-only
         self.analysisText.isUserInteractionEnabled = false
         self.analysisText.isEditable = false
+        self.recHeader.isUserInteractionEnabled = false
+        self.recHeader.isEditable = false
     }
 
     override func didReceiveMemoryWarning() {

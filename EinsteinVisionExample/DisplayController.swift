@@ -18,14 +18,15 @@ class DisplayController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
+        
+        // Set title
         self.title = self.currCategory
         
         if let layout = collectionView?.collectionViewLayout as? ApparelLayout {
             layout.delegate = self
         }
         
+        // Load photos
         if currCategory == "paddling clothing" {
             self.photos = Array(self.photos[0..<10])
         }
